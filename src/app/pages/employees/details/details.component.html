@@ -5,19 +5,19 @@
   <div class="card-body">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        Name: <h5>Manuel Perez</h5>
+        Name: <h5>{{employee.name}} {{employee.last_name}}</h5>
       </li>
       <li class="list-group-item">
-        Email: <h5>manuelperez@gmail</h5>
+        Email: <h5>{{employee.email}}</h5>
       </li>
       <li class="list-group-item">
-        Start Date: <h5>12/02/2020</h5>
+        Start Date: <h5>{{employee.start_date}}</h5>
       </li>
     </ul>
   </div>
   <div class="btn-group" role="group">
     <button class="btn btn-warning m-1 btn-sm" (click)="onGoToEdit()">Edit</button>
-    <button class="btn btn-danger m-1 btn-sm" (click)="onDelete()">Delete</button>
+    <button class="btn btn-danger m-1 btn-sm" (click)="onGoToDelete()">Delete</button>
   </div>
 </div>
 <button class="btn btn-secondary m-2" (click)="onGoBackToList()">Go Back to List</button>

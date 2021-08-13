@@ -8,14 +8,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="table-info" *ngFor="let item of [0,1,2,3,4]">
-      <th scope="row">Tyshawn Johns Sr.</th>
-      <td>madison@fadel.biz</td>
-      <td>01/05/2021</td>
+    <tr class="table-info" *ngFor="let item of employees$ | async">
+      <th scope="row">{{item.name}} {{item.last_name}}</th>
+      <td>{{item.email}}</td>
+      <td>{{item.start_date}}</td>
       <td class="btn-group d-none d-sm-block" role="group">
         <button type="button" class="btn btn-warning m-1" (click)="onGoToEdit(item)">Edit</button>
         <button type="button" class="btn btn-success m-1" (click)="onGoToDetails(item)">See</button>
-        <button type="button" class="btn btn-danger m-1" (click)="onGoToDelete(item)">Delete</button>
+        <button type="button" class="btn btn-danger m-1" (click)="onGoToDelete(item.id)">Delete</button>
       </td>
     </tr>
   </tbody>

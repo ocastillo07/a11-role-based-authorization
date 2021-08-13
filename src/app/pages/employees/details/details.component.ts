@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { Employee } from 'src/app/shared/models/employee.interface';
 import Swal from 'sweetalert2';
+import { EmployeesService } from '../employees.service';
 
 @Component({
   selector: 'app-details',
@@ -14,14 +16,17 @@ export class DetailsComponent implements OnInit {
     }
   };
 
-  employee: any = null;
+  employee : Employee = null;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private employeesSvc: EmployeesService) {
     const navigation = this.router.getCurrentNavigation();
-    this.employee = navigation.extras.state;
+    this.employee = navigation.extras.state.value;
   }
 
   ngOnInit(): void {
+    if(typeof this.employee === 'undefined') {
+      this.router.navigate(['list']);
+    }
   }
 
   onGoToEdit(): void {
@@ -33,8 +38,14 @@ export class DetailsComponent implements OnInit {
     this.router.navigate(['list']);
   }
 
-  onDelete():void {
-    Swal.fire("Deleted");
+  async onGoToDelete(): Promise<void> {
+    try {
+      await this.employeesSvc.onDeleteEmployees(this.employee?.id);
+      Swal.fire("Deleted");
+      this.onGoBackToList();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
 }

@@ -124,6 +124,10 @@
               "devServerTarget": "a11-role-based-authorization:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

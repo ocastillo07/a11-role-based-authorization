@@ -9,18 +9,22 @@ import { EmployeeFormModule } from './shared/components/employee-form/employee-f
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from './../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ContainerAppComponent } from './pages/container-app/container-app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    ContainerAppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HeaderModule,
     EmployeeFormModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

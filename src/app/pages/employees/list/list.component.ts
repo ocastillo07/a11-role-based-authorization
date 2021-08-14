@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { EmployeesService } from '../employees.service';
+import { EmployeesService } from '../../../shared/services/employees.service';
 
 @Component({
   selector: 'app-list',
